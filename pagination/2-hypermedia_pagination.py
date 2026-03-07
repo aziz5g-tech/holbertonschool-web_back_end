@@ -45,7 +45,8 @@ class Server:
         """Return hypermedia pagination metadata for a page."""
         page_data = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
-        next_page = page + 1 if (page * page_size) < len(self.dataset()) else None
+        dataset_len = len(self.dataset())
+        next_page = page + 1 if (page * page_size) < dataset_len else None
         prev_page = page - 1 if page > 1 else None
 
         return {
